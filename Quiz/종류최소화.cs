@@ -57,30 +57,62 @@ public class Solution2 {
     public int solution(int k, int[] tangerine) {
         int answer = 0;
         int rest = k ;
-        //크기의 평균이 아닌, 다른 종류의 수를 최솟값으로 하려는게 목적
-        //가장 많은 수를 넣으면 됨
-        //귤 수는 10만, 종류는 1천만 
         Dictionary<int, int> sizeAndCount = new Dictionary<int, int>();
-        for( int i = 0 ; i < tangerine.Length; i++){
-            if(sizeAndCount.ContainsKey(tangerine[i])){
+        for( int i = 0 ; i < tangerine.Length; i++)
+        {
+            if(sizeAndCount.ContainsKey(tangerine[i]))
+            {
                 sizeAndCount[tangerine[i]] +=1;
             }
-            else {
+            else 
+            {
                 sizeAndCount.Add(tangerine[i],1);
             }
         }
-        foreach (KeyValuePair<int, int> items in sizeAndCount){
+        foreach (KeyValuePair<int, int> items in sizeAndCount)
+        {
             //System.Console.WriteLine(items.Key+"의 수량은"+items.Value);
         }
        var gg = sizeAndCount.OrderByDescending(x => x.Value);
         //System.Console.WriteLine("정렬");
-        foreach (KeyValuePair<int, int> items in gg){
-            answer += 1 ; //종류 하나 더하고
-            rest -= items.Value; //숫자 만큼 빼고
-            if(rest <=0){
-                break; //남은 게 없으면 빼고 
+        foreach (KeyValuePair<int, int> items in gg)
+        {
+            answer += 1;
+            rest -= items.Value;
+            if(rest <=0)
+            {
+                break; 
             }
             //System.Console.WriteLine(items.Key+"의 수량은"+items.Value);
+        }
+        return answer;
+    }
+}
+
+public class Solution3 {
+    public int solution(int k, int[] tangerine)
+    {
+        int answer = 0;
+        Array.Sort(tangerine);
+        List<int> list = new List<int>();
+        list.Add(1);
+        for(int i = 0; i < tangerine.Length - 1; i++)
+        {
+            if(tangerine[i] == tangerine[i + 1])
+            {
+                list[list.Count - 1]++;
+            }
+            else
+            {
+                list.Add(1);
+            }
+        }
+        list.Sort();
+        list.Reverse();
+        for(int i = 0; i < list.Count; i++)
+        {
+            k -= list[i];
+            if(k <= 0) { answer = i + 1; break; }
         }
         return answer;
     }
