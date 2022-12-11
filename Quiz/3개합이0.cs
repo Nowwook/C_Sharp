@@ -24,3 +24,22 @@ public class Solution {
         return answer;
     }
 }
+
+using System;
+using System.Linq;
+
+public class Solution 
+{
+    public int solution(int[] number) 
+    {
+        int answer = 0;
+        for (int i = 0; i < number.Length; i++)
+        {
+            for (int j = i + 1; j < number.Length; j++)
+            {
+                answer += number.Skip(j + 1).Where(x => number[i] + number[j] + x == 0).Count();
+            }
+        }
+        return answer;
+    }
+}
