@@ -1,5 +1,10 @@
 using System;
 
+// 배열                         경우의 수
+// [-2, 3, 0, 2, -5]	        2
+// [-3, -2, -1, 0, 1, 2, 3]	    5
+// [-1, 1, -1, 1]	            0
+    
 public class Solution {
     public int solution(int[] number) {
         int answer = 0;
