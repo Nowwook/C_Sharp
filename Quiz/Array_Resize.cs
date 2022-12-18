@@ -1,6 +1,6 @@
 using System;
 
-# 나누어 떨어지는 값을 오름차순으로 정렬한 배열 반환
+// 나누어 떨어지는 값을 오름차순으로 정렬한 배열 반환
 
 public class Solution {
     public int[] solution(int[] arr, int divisor) {
@@ -23,7 +23,7 @@ public class Solution {
         Array.Sort(answer);
         Array.Reverse(answer);
         
-        #  Array.Resize(ref answer, k)
+        // Array.Resize(ref answer, k)  배열 크기 변경
         
         Array.Resize(ref answer, k);
         Array.Sort(answer);
