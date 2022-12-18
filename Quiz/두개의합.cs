@@ -5,8 +5,10 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-public class Solution {
-    public int[] solution(int[] numbers) {
+public class Solution 
+{
+    public int[] solution(int[] numbers) 
+    {
         Array.Sort(numbers);
         int k =0;
         int[] answer = new int[numbers[numbers.Length-1]+numbers[numbers.Length-2]];
@@ -33,5 +35,23 @@ public class Solution {
         }
         Array.Sort(answer2);
         return answer2;
+    }
+}
+
+public class Solution2 
+{
+    public int[] solution(int[] numbers) 
+    {
+        List<int> answerList = new List<int>();
+
+        for(int i = 0 ; i < numbers.Length -1 ; ++i){
+            for(int j = i+1 ; j < numbers.Length ; ++ j)
+                if(!answerList.Contains(numbers[i] + numbers[j]))
+                    answerList.Add(numbers[i] + numbers[j]);
+        }
+
+        answerList.Sort();
+
+        return answerList.ToArray();
     }
 }
