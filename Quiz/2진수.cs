@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-// 2진수
+// 주어진 자연수 n을 2진수로 변경했을때 n보다 크면서 1의 개수가 같은 수의 최솟값 
 
 class Solution 
 {
@@ -24,26 +24,9 @@ class Solution
     }
 }
 
-int answer = 0;
-        int t = Regex.Matches(Convert.ToString(n,2), "1").Count;
-        while(true) {   
-            if( t == Regex.Matches(Convert.ToString(++n,2), "1").Count )
-                break;
-        }
-
-        return n;
-        
-        public int solution(int n) 
-    {
-        int countOfOne = Convert.ToString(n, 2).ToArray().Where(d => d == '1').Count();
-
-        while (true)
-        {
-            n++;
-
-            if (countOfOne == Convert.ToString(n, 2).ToArray().Where(d => d == '1').Count())
-                break;
-        }
-
-        return n;
-    }
+/*
+2진수 k에서 1을 카운트 하는법
+k.Count(x => (x == '1'));
+Regex.Matches(k, "1").Count;
+k.ToArray().Where(d => d == '1').Count();
+*/
