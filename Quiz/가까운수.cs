@@ -24,5 +24,5 @@ public class Solution {
 /*
 or
 array.OrderBy(x => x).FirstOrDefault(x => Math.Abs(x - n) == array.Min(o => Math.Abs(o - n)));
-array.OrderBy(x => x).FirstOrDefault(x => Math.Abs(x - n) == array.Min(o => Math.Abs(o - n)));
+array.OrderBy(x => x).OrderBy(x=>Math.Abs(x-n)).ToArray().First();
 /*
