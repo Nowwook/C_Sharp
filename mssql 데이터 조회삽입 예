@@ -1,0 +1,35 @@
+winform 의 버튼으로 
+데이터 삽입 InsertDB
+데이터 조회 GetUserInfo()
+
+namespace MssqlTest
+{
+    public partial class Form1 : Form
+    {
+        MssqlLib mMssqlLib = new MssqlLib();
+ 
+        public Form1()
+        {
+            InitializeComponent();
+        }
+ 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Search();
+        }
+ 
+        private void Search()
+        {
+            DataSet ds = mMssqlLib.GetUserInfo();
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+ 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(txtID.Text);
+            string name = txtName.Text.Trim();
+            mMssqlLib.InsertDB(id,name);
+            Search();
+        }
+    }
+}
