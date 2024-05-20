@@ -1,0 +1,9 @@
+private set 과 set 없는 것의 차이
+
+둘 다 읽기 전용이지만
+
+public int day { get; private set; }
+내부 클래스에선 접근 가능하게
+
+public int day { get; }
+내부 클래스에서도 접근 불가
