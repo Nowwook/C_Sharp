@@ -1,0 +1,11 @@
+
+Solution Build    : 프로젝트 단위로 소스코드 및 헤더 파일을 컴파일 및 링크, 이전 빌드 파일이 있다면, 변경된 코드 및 헤더 파일에 대해서만 빌드를 진행
+
+Solution Rebuild  : 프로젝트 단위로 소스코드 및 헤더 파일을 컴파일 및 링크, 이전 빌드 내역에 관계없이 전체 프로젝트를 다시 빌드
+                    ( A, B로 구성된 솔루션의 경우 프로젝트 A를 솔루션 정리 및 솔루션 빌드 시 프로젝트 B에 수정내역이 있는 경우, 수정 내역이 반영되기 전의 프로젝트 B가 링크될 수 있음 )
+
+Solution Clean    : 솔루션 빌드에서 생성된 중간 파일 및 최종 파일을 삭제
+
+단일 프로젝트 : Solution Build + Solution Clean = Solution Rebuild
+
+복수 프로젝트 : Solution Build + Solution Clean != Solution Rebuild
