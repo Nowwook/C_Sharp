@@ -76,6 +76,7 @@ using System.Windows.Threading;
 // 타이머 인스턴스 생성
 DispatcherTimer timer = new DispatcherTimer();
 timer.Interval = TimeSpan.FromSeconds(1); // 1초 간격
+timer.Interval = new TimeSpan(0, 0, 0, 1); // 1초 간격
 timer.Tick += OnTimedEvent;
 timer.Start();
 
