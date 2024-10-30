@@ -1,7 +1,8 @@
 /*
-System.Timers.Timer         서버 및 백그라운드 작업에 적합한 멀티스레드 타이머.
-System.Threading.Timer      스레드 풀에서 실행되는 타이머로, 고급 스레드 제어가 필요할 때 사용.
-System.Windows.Forms.Timer  Windows Forms 애플리케이션에서 UI와 안전하게 상호작용할 수 있는 타이머.
+System.Timers.Timer                 서버 및 백그라운드 작업에 적합한 멀티스레드 타이머.
+System.Threading.Timer              스레드 풀에서 실행되는 타이머로, 고급 스레드 제어가 필요할 때 사용.
+System.Windows.Forms.Timer          Windows Forms 애플리케이션에서 UI와 안전하게 상호작용할 수 있는 타이머.
+System.Windows.Threading.DispatcherTimer        WPF 애플리케이션에 최적화.
 */
 
 /*
@@ -61,5 +62,28 @@ private void OnTimedEvent(Object sender, EventArgs e)
 {
     label1.Text = DateTime.Now.ToString("HH:mm:ss");
 }
+
+
+/*
+4. System.Windows.Threading.DispatcherTimer
+주요 특징: WPF 애플리케이션에서 주로 사용되는 타이머로, UI 스레드에서 주기적으로 작업을 수행할 때 사용됩니다.
+사용 예시: WPF GUI 프로그램에서 UI 업데이트와 같은 작업을 주기적으로 수행할 때 사용됩니다.
+스레드: UI 스레드(Dispatcher 스레드)에서 실행되며, UI 요소와 직접적으로 안전하게 상호작용할 수 있습니다.
+*/
+
+using System.Windows.Threading;
+
+// 타이머 인스턴스 생성
+DispatcherTimer timer = new DispatcherTimer();
+timer.Interval = TimeSpan.FromSeconds(1); // 1초 간격
+timer.Tick += OnTimedEvent;
+timer.Start();
+
+private void OnTimedEvent(object sender, EventArgs e)
+{
+    // UI 요소에 직접 접근 가능
+    textBlock.Text = DateTime.Now.ToString("HH:mm:ss");
+}
+
 
 
