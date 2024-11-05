@@ -1,0 +1,40 @@
+// A 화면
+private void OpenWindowBButton_Click(object sender, RoutedEventArgs e)
+{
+    WindowB windowB = new WindowB();
+    if (windowB.ShowDialog() == true) // ShowDialog를 사용하여 모달 창으로 열기
+    {
+        // 선택된 행의 ADD 컬럼 값을 텍스트박스에 입력
+        if (windowB.SelectedRow != null)
+        {
+            txtAddColumnValue.Text = windowB.SelectedRow["ADD"].ToString();
+        }
+    }
+}
+
+
+// B 화면
+public partial class WindowB : Window
+{
+    public DataRowView SelectedRow { get; private set; }
+
+    public WindowB()
+    {
+        InitializeComponent();
+        // 데이터그리드 초기화 및 데이터 로드
+    }
+
+    private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (dataGrid.SelectedItem is DataRowView row)
+        {
+            SelectedRow = row; // 선택된 행 저장
+        }
+    }
+
+    private void CloseButton_Click(object sender, RoutedEventArgs e)
+    {
+        DialogResult = true; // 창 닫기 전에 DialogResult 설정
+        Close();
+    }
+}
